@@ -15,7 +15,12 @@ async function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function getTimeStamp() {
+  return (new Date()).toISOString().replace(/(:|\.)/g, '_');
+}
+
 module.exports = {
   checkStatus,
-  delay
+  delay,
+  getTimeStamp
 };
