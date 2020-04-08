@@ -15,12 +15,25 @@ async function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// Return a timestamp like "2020-04-08T11_45_35_407Z"
 function getTimeStamp() {
   return (new Date()).toISOString().replace(/(:|\.)/g, '_');
+}
+
+// Get hours, minutes, seconds from milliseconds input
+function getHMS(ms) {
+  let seconds = ms / 1000;
+  const hours = Math.floor(seconds / 3600);
+  seconds %= 3600;
+  const minutes = Math.floor(seconds / 60);
+  seconds = seconds % 60;
+
+  return {hours, minutes, seconds};
 }
 
 module.exports = {
   checkStatus,
   delay,
-  getTimeStamp
+  getTimeStamp,
+  getHMS
 };
